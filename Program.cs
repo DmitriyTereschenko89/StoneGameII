@@ -14,7 +14,7 @@
                 {
                     return dp[player][i][m];
                 }
-                int result = player == 1 ? 1000000 : -1;
+                int result = player == 1 ? int.MaxValue : -1;
                 int possibleSum = 0;
                 for (int x = 1; x <= Math.Min(2 * m, piles.Length - i); ++x)
                 {
@@ -42,10 +42,7 @@
                     for (int j = 0; j <= n; ++j)
                     {
                         dp[i][j] = new int[n + 1];
-                        for (int k = 0; k <= n; ++k)
-                        {
-                            dp[i][j][k] = -1;
-                        }
+                        Array.Fill(dp[i][j], -1);
                     }
                 }
                 return DFS(piles, dp, 0, 0, 1);
